@@ -5,11 +5,80 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	 <style>
 	   html, body, #map {
-	      height:100%;
-	      width:100%;
-	      padding:0px;
-	      margin:0px;
+			height:100%;
+			width:100%;
+			padding:0px;
+			margin:0px;
 	   }
+	   
+	   #down { 
+			bottom:0px;
+			height:50px;
+			width:80%;
+			left:10%;
+			right:10%;
+			position:absolute;
+			background:#fff;
+			z-index:999;
+			opacity:0.5;
+			pointer-events:none;
+			text-align:center;
+			font-size:40px;
+	   }
+	   #up { 
+			top:0px;
+			height:50px;
+			width:80%;
+			left:10%;
+			right:10%;
+			position:absolute;
+			background:#fff;
+			z-index:998;
+			opacity:0.5;
+			pointer-events:none;
+			text-align:center;
+			font-size:40px;
+	   }
+	   #left { 
+			left:0px;
+			width:50px;
+			height:80%;
+			top:10%;
+			bottom:10%;
+			position:absolute;
+			background:#fff;
+			z-index:997;
+			opacity:0.5;
+			pointer-events:none;
+			text-align:center;
+			font-size:40px;
+	   }
+	   #right { 
+			right:0px;
+			width:50px;
+			height:80%;
+			top:10%;
+			bottom:10%;
+			position:absolute;
+			background:#fff;
+			z-index:996;
+			opacity:0.5;
+			pointer-events:none;
+			text-align:center;
+			font-size:40px;
+	   }
+	   #down:hover { background:#333; }
+	   #up:hover { background:#333; }
+	   #left:hover { background:#333; }
+	   #right:hover { background:#333; }
+	   #left.inner {
+			position:absolute;
+			top: -50%;
+		}
+		#right.inner {
+			position:absolute;
+			top: -50%;
+		}
 	</style>
 
 	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
@@ -21,12 +90,17 @@
 <body>
 
 	<div id="map"></div>
+    
+	<div id="up">&#8657</div>
+	<div id="down">&#8659</div>
+	<div id="left"><div class="inner">&#8656</div></div>
+	<div id="right"><div class="inner">&#8658</div></div>
 
 	<script type="text/javascript">
 		var map = new L.Map('map', {borderpan: true, borderPanOffset: 300, borderWidth: 100});
 
-		var url = 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
-			attr ='Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data {attribution.OpenStreetMap}',
+		var url = 'http://tiles.mapbox.com/v3/landplanner.map-rnsuossf/{z}/{x}/{y}.png',
+			attr ='Map data {attribution.OpenStreetMap}',
 			service = new L.TileLayer(url, {subdomains:"1234",attribution: attr});
 
 		var bounds = new L.LatLngBounds(new L.LatLng(-41, -74), new L.LatLng(-42, -72));
